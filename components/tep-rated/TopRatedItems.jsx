@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function TrendingNowItem({ movie }) {
+export default function TopRatedItems({ movie }) {
   return (
     <div className="flex-shrink-0 w-48 cursor-pointer hover:scale-105 transition-transform">
       <Link href={`/movie/${movie.id}`}>
