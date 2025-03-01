@@ -20,6 +20,17 @@ export async function getTredingById(id) {
     console.log(err);
   }
 }
+export async function getVideoByID(id) {
+  try {
+    const response = await fetch(
+      `http://localhost:3000/api/movie/videos/${id}`
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+}
 
 // popular movies
 

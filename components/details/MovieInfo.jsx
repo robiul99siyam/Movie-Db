@@ -5,7 +5,7 @@ export default function MovieInfo({ movie }) {
       <div className="flex items-center mb-4 space-x-4">
         <span className="text-green-500">{movie.release_date}</span>
         <span>|</span>
-        <span>127 min</span>
+        <span>{movie.runtime} min</span>
       </div>
       <p className="text-lg mb-6">{movie.overview}</p>
       <div className="mb-6">

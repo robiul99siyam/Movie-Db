@@ -1,5 +1,5 @@
 import MovieDetails from "@/components/details/MovieDetails";
-import { getTredingById } from "@/Movie-data-fetch";
+import { getTredingById, getVideoByID } from "@/Movie-data-fetch";
 
 export async function generateMetadata({ params: { id } }) {
   const movie = await getTredingById(id);
@@ -14,5 +14,6 @@ export async function generateMetadata({ params: { id } }) {
 }
 export default async function detailsPage({ params: { id } }) {
   const movie = await getTredingById(id);
-  return <MovieDetails movie={movie} />;
+  const movieUrl = await getVideoByID(id);
+  return <MovieDetails movieUrl={movieUrl} movie={movie} />;
 }

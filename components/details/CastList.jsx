@@ -14,10 +14,6 @@ export default function CastList({ cast }) {
               width={96}
               height={96}
               quality={100}
-              loading="lazy"
-              priority={false}
-              placeholder="blur"
-              blurDataURL="/placeholder.jpg"
             />
             <p className="text-sm">{actor.name}</p>
           </div>
