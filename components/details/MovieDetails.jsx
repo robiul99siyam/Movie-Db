@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import ActionButtons from "./ActionButtons";
 import Backdrop from "./Backdrop";
 import CastList from "./CastList";
@@ -6,6 +7,8 @@ import MoviePoster from "./MoviePoster";
 import SocialShare from "./SocialShare";
 
 export default function MovieDetails({ movie, movieUrl }) {
+  const authId = cookies().get("_us");
+
   return (
     <div id="movieDetails" className="min-h-screen pt-20 mb-8">
       <Backdrop backdropPath={movie.backdrop_path} />
@@ -20,7 +23,7 @@ export default function MovieDetails({ movie, movieUrl }) {
           <div className="md:w-2/3">
             <MovieInfo movie={movie} />
             <CastList cast={movie.production_companies} />
-            <ActionButtons />
+            <ActionButtons movieId={movie.id} authId={authId.value} />
             <SocialShare />
           </div>
         </div>

@@ -1,10 +1,13 @@
+import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function PopularItems({ movie }) {
+  const cookieStore = cookies();
+  const token = cookieStore.get("_us");
   return (
     <div className="flex-shrink-0 w-48 cursor-pointer hover:scale-105 transition-transform">
-      <Link href={`/movie/${movie.id}`}>
+      <Link href={token?.value ? `/movie/${movie.id}` : "/login"}>
         <Image
           src={`${process.env.TMDB_IMAGE}${movie.poster_path}`}
           alt="Smile 2"

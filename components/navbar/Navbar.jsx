@@ -1,7 +1,12 @@
+import { cookies } from "next/headers";
 import Link from "next/link";
+import Logout from "./Logout";
 import SearchInputField from "./SearchInputField";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const cookiesStore = cookies();
+  const token = cookiesStore.get("_us");
+
   return (
     <nav className="fixed w-full z-50 bg-gradient-to-b from-black to-transparent ">
       <div className="container mx-auto px-4 py-6 flex justify-between items-center">
@@ -20,6 +25,7 @@ export default function Navbar() {
             <Link href="/WatchList" className="text-white hover:text-gray-300">
               Watch Later
             </Link>
+            {token && <Logout />}
           </div>
         </div>
         {/* search input fileds components here now  */}

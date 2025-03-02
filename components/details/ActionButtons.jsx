@@ -1,7 +1,18 @@
-export default function ActionButtons() {
+"use client";
+
+import { updateWatchList } from "@/app/action";
+
+export default function ActionButtons({ movieId, authId }) {
+  async function handleSubmit() {
+    await updateWatchList(movieId, authId);
+  }
+
   return (
     <div className="mb-6 flex flex-wrap gap-4">
-      <button className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-lg">
+      <button
+        onClick={handleSubmit}
+        className="flex items-center gap-2 bg-black/40 px-4 py-2 rounded-lg"
+      >
         <svg width="24" height="24" stroke="currentColor" strokeWidth="2">
           <path d="M12 11v6M9 14h6" />
         </svg>

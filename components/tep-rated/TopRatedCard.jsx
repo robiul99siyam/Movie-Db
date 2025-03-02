@@ -1,8 +1,11 @@
 import { getTopRatedAllData } from "@/Movie-data-fetch";
+import { revalidatePath } from "next/cache";
 import TopRatedItems from "./TopRatedItems";
 
 export default async function TopRatedCard() {
   const tepRatedMovie = await getTopRatedAllData();
+
+  revalidatePath("/");
   return (
     <div className="container mx-auto px-4 py-8">
       <section className="mb-8">
