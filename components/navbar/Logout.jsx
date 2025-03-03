@@ -7,6 +7,7 @@ export default function Logout() {
   const handleLogout = async () => {
     await logout();
     router?.push("/login");
+    router.refresh();
   };
   return (
     <span className="cursor-pointer" onClick={handleLogout}>

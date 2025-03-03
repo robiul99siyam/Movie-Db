@@ -1,12 +1,16 @@
 import mongoose, { Schema } from "mongoose";
-const watchListSchema = new Schema({
+const WatchSchema = new Schema({
+  authId: {
+    type: String,
+    required: true,
+  },
   movieId: {
     type: Array,
     required: true,
   },
 });
 
-const WatchList =
-  mongoose.models.watchList ?? mongoose.model("watchList", watchListSchema);
+const watchingModel =
+  mongoose.models.watches ?? mongoose.model("watches", WatchSchema);
 
-export { WatchList };
+export { watchingModel };
