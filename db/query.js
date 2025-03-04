@@ -2,7 +2,7 @@ import { setAuthCookie } from "@/app/action";
 import { User } from "@/models/user-models";
 import { watchingModel } from "@/models/watchList-model";
 import connectMongo from "@/service/mongoose";
-import { replaceIdObject } from "@/utils";
+import { replaceId, replaceIdObject } from "@/utils";
 
 export async function createUser(user) {
   return await User.create(user);
@@ -22,7 +22,7 @@ export async function foundUserCradentials(cradentials) {
 export async function addWatchList(movieId, authId) {
   try {
     await connectMongo(); // Ensure MongoDB is connected
-
+    console.log(movieId, authId);
     const foundWatchList = await watchingModel.findOne({ authId });
     if (foundWatchList) {
       if (foundWatchList.movieId.includes(movieId)) {
@@ -51,7 +51,7 @@ export async function addWatchList(movieId, authId) {
 export async function getAllWatchlist() {
   try {
     const watchlist = await watchingModel.find().lean();
-    return watchlist;
+    return replaceId(watchlist);
   } catch (e) {
     console.error("Error fetching watchlist data:", e);
     return [];

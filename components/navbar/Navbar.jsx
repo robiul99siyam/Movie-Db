@@ -22,7 +22,7 @@ export default async function Navbar() {
               Compare Movies
             </Link>
 
-            <Link href="/WatchList" className="text-white hover:text-gray-300">
+            <Link href="/watchList" className="text-white hover:text-gray-300">
               Watch Later
             </Link>
             {token && <Logout />}

@@ -9,9 +9,11 @@ import SocialShare from "./SocialShare";
 
 export default async function MovieDetails({ movie, movieUrl }) {
   const auth = cookies().get("_us");
+
   const watch = await getAllWatchlist();
+
   const userWatchList = watch.find((w) => w.authId === auth.value);
-  console.log(userWatchList);
+
   return (
     <div id="movieDetails" className="min-h-screen pt-20 mb-8">
       <Backdrop backdropPath={movie.backdrop_path} />
@@ -26,7 +28,11 @@ export default async function MovieDetails({ movie, movieUrl }) {
           <div className="md:w-2/3">
             <MovieInfo movie={movie} />
             <CastList cast={movie.production_companies} />
-            <ActionButtons movieId={movie.id} authId={auth.value} />
+            <ActionButtons
+              userWatchList={userWatchList}
+              movieId={movie.id}
+              authId={auth.value}
+            />
             <SocialShare />
           </div>
         </div>
